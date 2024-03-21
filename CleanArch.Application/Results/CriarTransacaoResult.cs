@@ -2,8 +2,9 @@
 
 namespace CleanArch.Application;
 
-public class CriarTransacaoOutDTO
+public class CriarTransacaoResult
 {
+
     [JsonPropertyName("saldo")]
     public int Saldo { get; set; }
     [JsonPropertyName("limite")]

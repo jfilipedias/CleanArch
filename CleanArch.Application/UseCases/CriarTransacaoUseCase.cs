@@ -13,24 +13,23 @@ public class CriarTransacao
         _transacaoRepsitory = transacaoRepository;
     }
 
-    public CriarTransacaoOutDTO Executar(int valor, char tipo, string descricao, int clienteId)
+    public CriarTransacaoResult Executar(int clienteId, CriarTransacaoCommand criarTransacaoCommand)
     {
-        var transacao = new Transacao(valor, tipo, descricao);
-        transacao.Validar();
+        var transacao = new Transacao(criarTransacaoCommand.Valor, criarTransacaoCommand.Tipo, criarTransacaoCommand.Descricao);
 
         var cliente = _clienteRepsitory.ObterPorId(clienteId);
-        if (transacao.Tipo == 'c') cliente.Creditar(transacao.Valor);
-        if (transacao.Tipo == 'd') cliente.Debitar(transacao.Valor);
+        if (transacao.Tipo == "c") cliente.Creditar(transacao.Valor);
+        if (transacao.Tipo == "d") cliente.Debitar(transacao.Valor);
 
         _clienteRepsitory.AtualizarSaldo(cliente.Saldo);
         _transacaoRepsitory.Salvar(transacao);
 
-        var criarTransacaoOutDTO = new CriarTransacaoOutDTO()
+        var criarTransacaoResult = new CriarTransacaoResult()
         {
             Saldo = cliente.Saldo,
             Limite = cliente.Limite
         };
 
-        return criarTransacaoOutDTO;
+        return criarTransacaoResult;
     }
 }
