@@ -18,13 +18,13 @@ public class Transacao
         _notificador = new Notificador();
 
         Validar();
-        if (_notificador.PossuiErros) throw new NotificadorException(_notificador.ObterErros());
+        if (_notificador.PossuiNotificacoes) throw new NotificadorException(_notificador.ObterNotificacoes());
     }
 
     private void Validar()
     {
-        if (Valor <= 0) _notificador.AdicionarErro("O valor da transação deve ser maior que 0.");
-        if (string.IsNullOrEmpty(Tipo) || (Tipo != "c" && Tipo != "d")) _notificador.AdicionarErro("O tipo da transação deve ser 'c' ou 'd'.");
-        if (string.IsNullOrEmpty(Descricao) || Descricao.Length > 10) _notificador.AdicionarErro("A descricao deve ter entre 1 e 10 caracteres.");
+        if (Valor <= 0) _notificador.AdicionarNotificacao("O valor da transação deve ser maior que 0.");
+        if (string.IsNullOrEmpty(Tipo) || (Tipo != "c" && Tipo != "d")) _notificador.AdicionarNotificacao("O tipo da transação deve ser 'c' ou 'd'.");
+        if (string.IsNullOrEmpty(Descricao) || Descricao.Length > 10) _notificador.AdicionarNotificacao("A descricao deve ter entre 1 e 10 caracteres.");
     }
 }

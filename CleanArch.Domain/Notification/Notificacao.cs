@@ -1,10 +1,10 @@
 ﻿namespace CleanArch.Domain;
 
-public class ErroNotificacao
+public class Notificacao
 {
     public string Message { get; set; }
 
-    public ErroNotificacao(string message)
+    public Notificacao(string message)
     {
         Message = message;
     }

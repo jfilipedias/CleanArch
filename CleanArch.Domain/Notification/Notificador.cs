@@ -2,25 +2,25 @@
 
 public class Notificador
 {
-    private List<ErroNotificacao> _errosNotificacao;
+    private List<Notificacao> _notificacoes;
 
-    public bool PossuiErros
+    public bool PossuiNotificacoes
     {
-        get { return _errosNotificacao.Any(); }
+        get { return _notificacoes.Any(); }
     }
 
     public Notificador()
     {
-        _errosNotificacao = new List<ErroNotificacao>();
+        _notificacoes = new List<Notificacao>();
     }
 
-    public void AdicionarErro(string error)
+    public void AdicionarNotificacao(string mensagem)
     {
-        _errosNotificacao.Add(new ErroNotificacao(error));
+        _notificacoes.Add(new Notificacao(mensagem));
     }
 
-    public List<ErroNotificacao> ObterErros()
+    public List<Notificacao> ObterNotificacoes()
     {
-        return _errosNotificacao;
+        return _notificacoes;
     }
 }
