@@ -2,7 +2,7 @@
 
 namespace CleanArch.Application;
 
-public class CriarTransacaoCommand
+public class CriarTransacaoInput
 {
     [JsonPropertyName("valor")]
     public int Valor { get; set; }

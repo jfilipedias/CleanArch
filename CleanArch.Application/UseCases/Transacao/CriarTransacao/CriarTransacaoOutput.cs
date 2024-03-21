@@ -2,7 +2,7 @@
 
 namespace CleanArch.Application;
 
-public class CriarTransacaoResult
+public class CriarTransacaoOutput
 {
 
     [JsonPropertyName("saldo")]

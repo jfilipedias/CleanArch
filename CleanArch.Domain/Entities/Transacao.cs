@@ -15,8 +15,8 @@ public class Transacao
         Descricao = descricao;
         RealizadaEm = DateTime.Now;
 
-        var resultado = Validar();
-        if (resultado.PossuiNotificacoes) throw new NotificadorException(resultado.ObterNotificacoes());
+        var notificador = Validar();
+        if (notificador.PossuiNotificacoes) throw new NotificadorException(notificador.ObterNotificacoes());
     }
 
     private Notificador Validar()
