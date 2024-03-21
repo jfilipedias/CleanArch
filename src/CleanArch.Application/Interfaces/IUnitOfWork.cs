@@ -1,6 +1,6 @@
 ﻿namespace CleanArch.Application;
 
-public interface IUnitOfWork
+public interface IUnitOfWork : IDisposable
 {
     Task BeginTransaction();
     Task Commit();
