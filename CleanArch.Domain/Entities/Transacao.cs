@@ -2,7 +2,6 @@
 
 public class Transacao
 {
-    public Notificador _notificador { get; }
     public int CustomerId { get; set; }
     public int Valor { get; set; }
     public string Tipo { get; set; } = string.Empty;
@@ -15,16 +14,17 @@ public class Transacao
         Tipo = tipo;
         Descricao = descricao;
         RealizadaEm = DateTime.Now;
-        _notificador = new Notificador();
 
-        Validar();
-        if (_notificador.PossuiNotificacoes) throw new NotificadorException(_notificador.ObterNotificacoes());
+        var resultado = Validar();
+        if (resultado.PossuiNotificacoes) throw new NotificadorException(resultado.ObterNotificacoes());
     }
 
-    private void Validar()
+    private Notificador Validar()
     {
-        if (Valor <= 0) _notificador.AdicionarNotificacao("O valor da transação deve ser maior que 0.");
-        if (string.IsNullOrEmpty(Tipo) || (Tipo != "c" && Tipo != "d")) _notificador.AdicionarNotificacao("O tipo da transação deve ser 'c' ou 'd'.");
-        if (string.IsNullOrEmpty(Descricao) || Descricao.Length > 10) _notificador.AdicionarNotificacao("A descricao deve ter entre 1 e 10 caracteres.");
+        var notificador = new Notificador();
+        if (Valor <= 0) notificador.AdicionarNotificacao("O valor da transação deve ser maior que 0.");
+        if (string.IsNullOrEmpty(Tipo) || (Tipo != "c" && Tipo != "d")) notificador.AdicionarNotificacao("O tipo da transação deve ser 'c' ou 'd'.");
+        if (string.IsNullOrEmpty(Descricao) || Descricao.Length > 10) notificador.AdicionarNotificacao("A descricao deve ter entre 1 e 10 caracteres.");
+        return notificador;
     }
 }

@@ -8,7 +8,7 @@ public class Cliente
 
     public void Debitar(int valor)
     {
-        if (Limite + Saldo - valor < 0) throw new Exception();
+        if (Limite + Saldo - valor < 0) throw new Exception("Cliente com saldo insuficiente.");
         Saldo -= valor;
     }
 
