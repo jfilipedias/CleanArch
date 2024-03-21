@@ -27,14 +27,14 @@ public class CriarTransacao
 
         try
         {
-            _unityOfWork.BeginTransaction();
+            await _unityOfWork.BeginTransaction();
             await _clienteRepository.AtualizarSaldo(cliente.Saldo);
             await _transacaoRepository.Salvar(transacao);
-            _unityOfWork.Commit();
+            await _unityOfWork.Commit();
         }
         catch
         {
-            _unityOfWork.Rollback();
+            await _unityOfWork.Rollback();
             throw;
         }
 

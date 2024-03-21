@@ -2,7 +2,7 @@
 
 public interface IUnitOfWork
 {
-    void BeginTransaction();
-    void Commit();
-    void Rollback();
+    Task BeginTransaction();
+    Task Commit();
+    Task Rollback();
 }
