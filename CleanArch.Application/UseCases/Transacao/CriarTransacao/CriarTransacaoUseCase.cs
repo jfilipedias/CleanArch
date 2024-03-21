@@ -4,20 +4,20 @@ namespace CleanArch.Application;
 
 public class CriarTransacao
 {
-    private IClienteRepository _clienteRepsitory;
-    private ITransacaoRepository _transacaoRepsitory;
+    private IClienteRepository _clienteRepository;
+    private ITransacaoRepository _transacaoRepository;
     private IUnitOfWork _unityOfWork;
 
     public CriarTransacao(IClienteRepository clienteRepository, ITransacaoRepository transacaoRepository, IUnitOfWork unityOfWork)
     {
-        _clienteRepsitory = clienteRepository;
-        _transacaoRepsitory = transacaoRepository;
+        _clienteRepository = clienteRepository;
+        _transacaoRepository = transacaoRepository;
         _unityOfWork = unityOfWork;
     }
 
-    public CriarTransacaoOutput Executar(int clienteId, CriarTransacaoInput input)
+    public async Task<CriarTransacaoOutput> Executar(int clienteId, CriarTransacaoInput input)
     {
-        var cliente = _clienteRepsitory.ObterPorId(clienteId);
+        var cliente = await _clienteRepository.ObterPorId(clienteId);
         if (cliente == null) throw new NaoEncontradoException("Cliente não encontrado");
 
         var transacao = new Transacao(input.Valor, input.Tipo, input.Descricao);
@@ -28,8 +28,8 @@ public class CriarTransacao
         try
         {
             _unityOfWork.BeginTransaction();
-            _clienteRepsitory.AtualizarSaldo(cliente.Saldo);
-            _transacaoRepsitory.Salvar(transacao);
+            await _clienteRepository.AtualizarSaldo(cliente.Saldo);
+            await _transacaoRepository.Salvar(transacao);
             _unityOfWork.Commit();
         }
         catch

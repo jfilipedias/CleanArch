@@ -2,6 +2,6 @@
 
 public interface IClienteRepository
 {
-    Cliente? ObterPorId(int id);
-    void AtualizarSaldo(int valor);
+    Task<Cliente?> ObterPorId(int id);
+    Task AtualizarSaldo(int valor);
 }

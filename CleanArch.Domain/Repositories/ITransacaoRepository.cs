@@ -2,5 +2,5 @@
 
 public interface ITransacaoRepository
 {
-    void Salvar(Transacao transacao);
+    Task Salvar(Transacao transacao);
 }
