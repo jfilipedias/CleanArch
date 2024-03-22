@@ -1,10 +1,10 @@
 ﻿namespace CleanArch.Domain;
 
-public class NotificadorException : Exception
+public class NotificacaoException : Exception
 {
     public IEnumerable<ErroNotificacao> Erros;
 
-    public NotificadorException(IEnumerable<ErroNotificacao> erros)
+    public NotificacaoException(IEnumerable<ErroNotificacao> erros)
     {
         Erros = erros;
     }

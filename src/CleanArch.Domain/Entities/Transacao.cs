@@ -28,6 +28,6 @@ public class Transacao
         if (string.IsNullOrEmpty(Tipo) || (Tipo != "c" && Tipo != "d")) Notificacao.AdicionarErro("Tipo", "O tipo da transação deve ser 'c' ou 'd'.");
         if (string.IsNullOrEmpty(Descricao) || Descricao.Length > 10) Notificacao.AdicionarErro("Descricao", "A descricao deve ter entre 1 e 10 caracteres.");
 
-        if (Notificacao.PossuiErros) throw new NotificadorException(Notificacao.ObterErros());
+        if (Notificacao.PossuiErros) throw new NotificacaoException(Notificacao.ObterErros());
     }
 }
