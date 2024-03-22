@@ -1,6 +1,6 @@
 ﻿namespace CleanArch.Domain;
 
-public class Cliente
+public class ContaCorrente
 {
     public int Id { get; set; }
     public int Saldo { get; set; }

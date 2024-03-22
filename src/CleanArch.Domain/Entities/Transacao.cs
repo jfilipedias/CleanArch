@@ -2,14 +2,16 @@
 
 public class Transacao
 {
-    public int CustomerId { get; set; }
+    public int Id { get; set; }
+    public string NumeroContaCorrente { get; set; } = string.Empty;
     public int Valor { get; set; }
     public string Tipo { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
     public DateTime RealizadaEm { get; set; }
 
-    public Transacao(int valor, string tipo, string descricao)
+    public Transacao(string numeroContaCorrente, int valor, string tipo, string descricao)
     {
+        NumeroContaCorrente = numeroContaCorrente;
         Valor = valor;
         Tipo = tipo;
         Descricao = descricao;
