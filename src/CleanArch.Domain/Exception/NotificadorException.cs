@@ -2,10 +2,10 @@
 
 public class NotificadorException : Exception
 {
-    public IList<Notificacao> Notificacoes;
+    public IEnumerable<ErroNotificacao> Erros;
 
-    public NotificadorException(IList<Notificacao> notificacoes)
+    public NotificadorException(IEnumerable<ErroNotificacao> erros)
     {
-        Notificacoes = notificacoes;
+        Erros = erros;
     }
 }
