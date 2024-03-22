@@ -9,9 +9,9 @@ Esse projeto é um exemplo de como implementar Arquitetura Limpa com .Net.
 
 ## Regras de negócio
 
-- A transação deve conter uma descrição contendo de 1 a 10 caracteres.
-- A transação deve ser do tipo crédito ou débito.
-- Uma transação de débito **nunca** pode deixar o saldo do cliente menor que o seu limite disponível.
-- A transação deve possuir um valor inteiro que representa centavos.
-- O saldo do cliente deve ser um valor inteiro que representa centavos.
-- O limite do cliente deve ser um valor inteiro que representa centavos.
+- [x] A transação deve conter uma descrição contendo de 1 a 10 caracteres.
+- [x] A transação deve ser do tipo crédito ou débito ('c' ou 'd').
+- [x] Uma transação de débito **nunca** pode deixar o saldo do cliente menor que o seu limite disponível.
+- [x] A transação deve possuir um valor inteiro que representa centavos.
+- [x] O saldo do cliente deve ser um valor inteiro que representa centavos.
+- [x] O limite do cliente deve ser um valor inteiro que representa centavos.
